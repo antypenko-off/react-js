@@ -1,14 +1,12 @@
 
 import './App.css'
+import {CourseComponent} from "./components/CourseComponent.tsx";
 
-function App() {
+
+export const App = () => {
 
   return (
-    <>
-      <div>
-          йоу
-      </div>
-    </>
+    CourseComponent()
   )
 }
 
