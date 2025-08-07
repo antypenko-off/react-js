@@ -1,13 +1,12 @@
 
 import './App.css'
+import {FamilyComponent} from "./Components/FamilyComponent.tsx";
 
 function App() {
 
   return (
     <>
-      <div>
-          йоу
-      </div>
+        <FamilyComponent/>
     </>
   )
 }
