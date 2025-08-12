@@ -1,5 +1,6 @@
 
 import './App.css'
+import {Outlet} from "react-router";
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
       <div>
           йоу
       </div>
+        <Outlet/>
     </>
   )
 }
