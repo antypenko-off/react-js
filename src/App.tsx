@@ -1,15 +1,18 @@
 
 import './App.css'
+import {Outlet} from "react-router";
+import {Menu} from "./Components/Menu.tsx";
 
 function App() {
 
-  return (
-    <>
-      <div>
-          йоу
-      </div>
-    </>
-  )
+
+    return (
+        <>
+            <Menu/>
+            <Outlet/>
+        </>
+    );
 }
+
 
 export default App
