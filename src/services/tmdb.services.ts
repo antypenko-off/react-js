@@ -1,37 +1,39 @@
 import axios from 'axios';
 import type {IGenre} from "../models/IGenre.ts";
-import type {IMovie} from "../models/IMovie.ts";
+import type {IMovieResponse} from "../models/IMovie.ts";
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
 
-const api = axios.create({
+const apiClient = axios.create({
     baseURL: BASE_URL,
-    params: { Auhorization:"Barier " + API_KEY },
+    headers: {
+        "Content-Type": "application/json",
+        "Authentification": 'Bearer ' + API_KEY },
 });
 
-export const fetchGenres = async (): Promise<IGenre[]> => {
-    const { data } = await api.get('/genre/movie/list');
+export const getGenres = async ():Promise<IGenre[]> => {
+    const { data } = await apiClient.get('/genre/movie/list');
     return data.genres;
 };
 
-export const fetchMovies = async (params: {
+export const getMovies = async (selectors: {
     page?: number;
     genreId?: number;
     query?: string;
-}): Promise<{ results: IMovie[]; total_pages: number }> => {
+}):Promise<IMovieResponse[]> => {
     const endpoint = params.query ? '/search/movie' : '/discover/movie';
-    const { data } = await api.get(endpoint, {
+    const { data } = await apiClient.get(endpoint, {
         params: {
-            ...params,
-            with_genres: params.genreId,
             page: params.page || 1,
+            with_genres: params.genreId,
+            query: params.query,
         },
     });
     return data;
 };
 
-export const fetchMovieDetails = async (id: number): Promise<IMovie> => {
-    const { data } = await api.get(`/movie/${id}`);
+export const getMovieDetails = async (id: number) => {
+    const { data } = await apiClient.get(`/movie/${id}`);
     return data;
 };

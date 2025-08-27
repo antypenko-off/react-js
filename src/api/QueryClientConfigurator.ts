@@ -6,7 +6,5 @@ export const queryClientConfig = new QueryClient({
             staleTime: Infinity,
             refetchOnWindowFocus: true,
         },
-        mutations: {
-        },
     },
 });

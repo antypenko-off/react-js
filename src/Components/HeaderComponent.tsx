@@ -1,4 +1,4 @@
-export const HeaderComponent = () => {
+export const Header = () => {
     return (
         <></>
     );

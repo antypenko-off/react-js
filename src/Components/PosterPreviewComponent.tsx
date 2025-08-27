@@ -1,4 +1,4 @@
-export const PosterPreviewComponent = () => {
+export const PosterPreview = () => {
     return (
         <></>
     );

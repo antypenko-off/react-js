@@ -1,4 +1,4 @@
-export const StarsRatingComponent = () => {
+export const StarsRating = () => {
     return (
         <></>
     );

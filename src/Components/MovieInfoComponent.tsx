@@ -1,4 +1,4 @@
-export const MovieInfoComponent = () => {
+export const MovieInfo = () => {
     return (
         <></>
     );

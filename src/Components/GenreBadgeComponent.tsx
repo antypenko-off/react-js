@@ -1,4 +1,4 @@
-export const GenreBadgeComponent = () => {
+export const GenreBadge = () => {
     return (
         <></>
     );

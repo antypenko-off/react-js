@@ -1,4 +1,4 @@
-export const MovieListCardComponent = () => {
+export const MovieListCard = () => {
     return (
         <></>
     );
