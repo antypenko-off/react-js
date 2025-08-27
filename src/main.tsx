@@ -1,13 +1,14 @@
 import {createRoot} from 'react-dom/client'
 import './index.css'
-import {Provider} from "react-redux";
 import {RouterProvider} from "react-router";
-import {routes} from "./routes/router.tsx";
-import {store} from "./redux/store.ts";
+import {QueryClientProvider} from "@tanstack/react-query";
+import {router} from "./routes/router.tsx";
+import {queryClientConfig} from "./api/QueryClientConfigurator.ts";
 
 
+createRoot(document.getElementById('root')!).render(
 
-createRoot(document.getElementById('root')!).render(<Provider store={store}>
-    <RouterProvider router={routes}/>
-
-</Provider>);
+    <QueryClientProvider client={queryClientConfig}>
+        <RouterProvider router={router} />
+    </QueryClientProvider>
+);

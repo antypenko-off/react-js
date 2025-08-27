@@ -1,17 +1,17 @@
 import {createBrowserRouter} from "react-router";
+import {MoviesPage} from "../Pages/MoviesPage.tsx";
+import {MovieDetailsPage} from "../Pages/MovieDetailsPage.tsx";
 import App from "../App.tsx";
-import {UserPage} from "../Pages/UserPage.tsx";
-import {PostPage} from "../Pages/PostPage.tsx";
-import {CommentPage} from "../Pages/CommentPage.tsx";
-import {ComplexPage} from "../Pages/ComplexPage.tsx";
 
 
-export const routes = createBrowserRouter([
-        {path:"/", element:<App/>, children:[
-                        {path:"users", element:<UserPage/>},
-                        {path:"posts", element:<PostPage/>},
-                        {path:"comments", element:<CommentPage/>},
-                        {path:"complex", element:<ComplexPage/>}
-                ]}
-
-        ]);
+export const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <App/>,
+        children: [
+            { index: true, element: <MoviesPage/>},
+            { path: "movie/:id", element: <MovieDetailsPage/>},
+        ],
+    },
+    { path: "*", element: <div style={{padding:16}}>Not Found</div>},
+]);
