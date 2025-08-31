@@ -3,6 +3,7 @@ import type { FC, FormEvent } from "react";
 import { useMemo, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import GenreMenu from "./GenreMenu.tsx";
+import UserInfo from "./UserInfoComponent.tsx";
 
 export const Header: FC = () => {
     const [sp, setSp] = useSearchParams();
@@ -23,10 +24,14 @@ export const Header: FC = () => {
 
     return (
         <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
-            <div className="max-w-[1150px] mx-auto px-4 py-3 flex items-center gap-4">
+            <div className="max-w-screen-xl mx-auto px-4 py-3 flex flex-wrap items-center gap-3">
                 <button onClick={resetHome} className="text-xl font-bold tracking-tight">Pinball</button>
-                <GenreMenu/>
-                <form onSubmit={onSubmit} className="flex-1">
+
+                <div className="shrink-0">
+                    <GenreMenu />
+                </div>
+
+                <form onSubmit={onSubmit} className="order-last w-full sm:order-none sm:flex-1">
                     <input
                         value={query}
                         onChange={(e)=>setQuery(e.target.value)}
@@ -34,13 +39,10 @@ export const Header: FC = () => {
                         className="w-full rounded-md border border-gray-300 px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500"
                     />
                 </form>
-                <div className="flex items-center gap-2">
-                    <div className="size-7 rounded-full bg-gray-300" />
-                    <span className="text-sm text-gray-700">Welcome John</span>
-                </div>
+
+               <UserInfo/>
             </div>
         </header>
     );
 };
 
-export default Header;

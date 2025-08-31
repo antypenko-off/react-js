@@ -34,8 +34,7 @@ const MovieInfo: FC<Props> = ({ movie }) => {
                     </h1>
 
                     <div className="mt-2 flex flex-wrap items-center gap-3 text-sm text-gray-700">
-                        <StarsRating value={movie.vote_average}/>
-                        <span>{movie.vote_average.toFixed(1)}/10</span>
+                        <StarsRating value={movie.vote_average} showNumber={true}/>
                     </div>
 
                     <div className="mt-3 flex flex-wrap gap-1">

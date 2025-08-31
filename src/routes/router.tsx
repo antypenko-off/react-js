@@ -14,5 +14,5 @@ export const router = createBrowserRouter([
             { path: "movie/:id", element: <MovieDetailsPage/>},
         ],
     },
-    { path: "*", element: <div style={{padding:16}}>Not Found</div>},
+    { path: "*", element: <div>Not Found</div>},
 ]);

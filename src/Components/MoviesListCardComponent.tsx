@@ -20,15 +20,19 @@ const MoviesListCard: FC<Props> = ({ movie}) => {
     return (
         <article
             onClick={()=>navigate(`/movie/${movie.id}`)}
-            className="inline-block w-full  break-inside-avoid mb-4 rounded-lg border border-gray-200 bg-white shadow-sm transition hover:shadow-md "
+            className="cursor-pointer rounded-xl border border-gray-200 bg-white shadow-sm transition hover:shadow-md"
         >
             <PosterPreview path={movie.poster_path || movie.backdrop_path} alt={movie.title} size="w342"/>
-            <div className="p-3 grid gap-2">
-                <h3 className="m-0 text-base font-semibold leading-tight line-clamp-2" title={movie.title}>{movie.title}</h3>
-                <div className="text-xs text-gray-500">{year ?? "—"}</div>
-                <p className="m-0 text-sm text-gray-800 line-clamp-8">{movie.overview || "No description"}</p>
-                <StarsRating value={movie.vote_average}/>
-                <div className="flex flex-wrap gap-1">
+            <div className="p-4 grid gap-2">
+                <h3 className="m-0 text-base md:text-lg font-semibold leading-tight line-clamp-2" title={movie.title}>
+                    {movie.title}
+                </h3>
+                <div className="text-xs md:text-sm text-gray-500">{year ?? "—"}</div>
+                <p className="m-0 text-sm md:text-base text-gray-800 line-clamp-3 md:line-clamp-4">
+                    {movie.overview || "No description"}
+                </p>
+                <div className="mt-1"><StarsRating value={movie.vote_average}/></div>
+                <div className="mt-1 flex flex-wrap gap-1">
                     {movie.genre_ids.map(id => {
                         const g = genreById(id);
                         return g ? <GenreBadge key={id} genre={g}/> : null;

@@ -1,12 +1,35 @@
-
 import type { FC } from "react";
+import Rating from "@mui/material/Rating";
 
-type Props = { value:number };
+type Props = {
+    value: number;
+    precision?: number;
+    showNumber?: boolean;
+    sizePx?: number;
+};
 
-const StarsRating: FC<Props> = ({ value }) => {
-    const five = Math.round((value/2)*2)/2;
-    const stars = Array.from({length:5},(_,i)=> i+1<=five ? "★" : (i+0.5<five ? "☆" : "☆"));
-    return <div aria-label={`Rating ${value.toFixed(1)}/10`} className="text-amber-500 text-sm">{stars.join(" ")}</div>;
+const StarsRating: FC<Props> = ({
+                                    value,
+                                    precision = 0.1,
+                                    showNumber = false,
+                                    sizePx = 18,
+                                }) => {
+    const fiveScale = Number.isFinite(value) ? Math.min(5, Math.max(0, value / 2)) : 0;
+
+    return (
+        <div className="flex items-center gap-2" aria-label={`Rating ${value.toFixed(1)} out of 10`}>
+            <Rating
+                value={fiveScale}
+                readOnly
+                precision={precision}
+                sx={{
+                    color: "#f59e0b",
+                    fontSize: `${sizePx}px`,
+                }}
+            />
+            {showNumber && <span className="text-sm text-gray-700">{value.toFixed(1)}/10</span>}
+        </div>
+    );
 };
 
 export default StarsRating;

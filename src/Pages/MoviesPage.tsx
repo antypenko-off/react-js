@@ -14,17 +14,14 @@ const MoviesPage: FC = () => {
     const { data, isLoading, isError, isFetchingNextPage, fetchNextPage, hasNextPage } =
         useInfiniteMovies({ genreId, query });
 
-    // плоский список фильмов из страниц
     const items = useMemo(
         () => (data?.pages.flatMap((p) => p.results) ?? []),
         [data]
     );
 
-    // загрузка следующей страницы при прокрутке
     const onRender = useInfiniteLoader(
         async (_startIndex, stopIndex, currentItems) => {
             if (!hasNextPage || isFetchingNextPage) return;
-            // когда пользователь приблизился к концу списка — грузим дальше
             if (stopIndex >= currentItems.length - 1) {
                 await fetchNextPage();
             }
@@ -32,12 +29,12 @@ const MoviesPage: FC = () => {
         { isItemLoaded: (idx) => idx < items.length }
     );
 
-    // ремонтируем masonry при смене фильтра/поиска, чтобы список обнулялся
+
     const masonryKey = JSON.stringify({ genreId, query });
 
-    if (isLoading) return <div className="p-4">Loading…</div>;
-    if (isError)   return <div className="p-4">Error</div>;
-    if (!items.length) return <div className="p-4">Ничего не найдено</div>;
+    if (isLoading) return <div >Loading…</div>;
+    if (isError)   return <div >Error</div>;
+    if (!items.length) return <div >Nothing Found</div>;
 
     return (
         <main className="max-w-[1150px] mx-auto px-4 my-4">
@@ -45,9 +42,9 @@ const MoviesPage: FC = () => {
                 key={masonryKey}
                 items={items}
                 itemKey={(m) => m.id}
-                columnWidth={240}
-                columnGutter={16}
-                overscanBy={3}
+                columnWidth={210}
+                columnGutter={32}
+                overscanBy={1}
                 onRender={onRender}
                 render={({ data: movie }) => (
                     <div className="mb-4 ">
@@ -60,8 +57,8 @@ const MoviesPage: FC = () => {
                 {isFetchingNextPage
                     ? "Page Loading…"
                     : hasNextPage
-                        ? "" // прокрутка сама триггерит догрузку
-                        : "That's all 🎬"}
+                        ? ""
+                        : "That's all"}
             </div>
         </main>
     );
