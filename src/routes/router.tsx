@@ -1,7 +1,8 @@
 import {createBrowserRouter} from "react-router";
-import {MoviesPage} from "../Pages/MoviesPage.tsx";
-import {MovieDetailsPage} from "../Pages/MovieDetailsPage.tsx";
+
 import App from "../App.tsx";
+import MoviesPage from "../Pages/MoviesPage.tsx";
+import MovieDetailsPage from "../Pages/MovieDetailsPage.tsx";
 
 
 export const router = createBrowserRouter([

@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import {getMovieDetails} from "../../services/tmdb.services.ts";
-import type {IMovie} from "../../models/IMovie.ts";
+import {tmdbService} from "../../services/tmdb.services.ts";
+import type {IMovieDetails} from "../../models/IMovieDetails.ts";
 
 
 export const useGetMovieDetails = (id: number) => {
-    return useQuery<IMovie>({
+    return useQuery<IMovieDetails>({
         queryKey: ['movie', id],
-        queryFn: () => getMovieDetails(id),
+        queryFn: () => tmdbService.getMovieDetails(id),
         enabled: !!id,
     });
 };
