@@ -1,14 +1,14 @@
 import type { FC } from "react";
 import Rating from "@mui/material/Rating";
 
-type Props = {
+type StarsRatingProps = {
     value: number;
     precision?: number;
     showNumber?: boolean;
     sizePx?: number;
 };
 
-const StarsRating: FC<Props> = ({
+const StarsRating: FC<StarsRatingProps> = ({
                                     value,
                                     precision = 0.1,
                                     showNumber = false,

@@ -5,9 +5,9 @@ import GenreBadge from "./GenreBadgeComponent.tsx";
 import PosterPreview from "./PosterPreviewComponent.tsx";
 import StarsRating from "./StarsRatingComponent.tsx";
 
-type Props = { movie: IMovieDetails };
+type MovieInfoProps = { movie: IMovieDetails };
 
-const MovieInfo: FC<Props> = ({ movie }) => {
+const MovieInfo: FC<MovieInfoProps> = ({ movie }) => {
     const year = movie.release_date ? new Date(movie.release_date).getFullYear() : undefined;
     const runtimeHM = (mins?: number | null) => {
         if (!mins || mins <= 0) return null;
@@ -25,10 +25,6 @@ const MovieInfo: FC<Props> = ({ movie }) => {
         <section className="relative min-h-[100svh] overflow-hidden  ">
             <div
                 className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-neutral-950 dark:via-neutral-900 dark:to-neutral-950  "
-                aria-hidden
-            />
-            <div
-                className="absolute inset-0 opacity-30 dark:opacity-20 [mask-image:radial-gradient(60%_50%_at_50%_0%,black,transparent)] bg-[radial-gradient(900px_300px_at_50%_-10%,rgba(100,116,139,0.18),transparent)]"
                 aria-hidden
             />
             <div className="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-4 px-4 sm:py-6 lg:py-8">

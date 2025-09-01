@@ -25,7 +25,7 @@ export const Header: FC = () => {
     return (
         <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
             <div className="max-w-screen-xl mx-auto px-4 py-3 flex flex-wrap items-center gap-3">
-                <button onClick={resetHome} className="text-xl font-bold tracking-tight">Pinball</button>
+                <button onClick={resetHome} className="text-xl font-bold tracking-tight cursor-pointer">Pinball</button>
 
                 <div className="shrink-0">
                     <GenreMenu />
