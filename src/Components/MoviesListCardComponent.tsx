@@ -1,7 +1,6 @@
+import type {FC} from "react";
 
-import type { FC } from "react";
-
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import type {IMovie} from "../models/IMovie.ts";
 import PosterPreview from "./PosterPreviewComponent.tsx";
 import StarsRating from "./StarsRatingComponent.tsx";
